@@ -4,6 +4,8 @@ Must be placed in a directory named 'CarbonDevelopment'
 
 GIT COMMANDS 
 
+//to MERGE master and your branch LOCALLY
+//You must commit any changes you have made before you can PULL from the master
 //pull existing changes from the master
 //git pull origin master
 
@@ -19,5 +21,5 @@ GIT COMMANDS
 //pull from your branch 
 //git pull origin Stacey (or other names)
 
-//push to your BRANCH (Stacey)
+//push to your BRANCH 
 //git push origin Stacey (or other names)
