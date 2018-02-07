@@ -29,4 +29,20 @@
         android:text="Switch"
         tools:layout_editor_absoluteX="151dp"
         tools:layout_editor_absoluteY="357dp" />
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RadioButton"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="422dp" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RadioButton"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="474dp" />
 </android.support.constraint.ConstraintLayout>
