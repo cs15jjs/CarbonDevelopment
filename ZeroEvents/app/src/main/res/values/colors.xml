@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="homePageTextColour">#673AB7</color>
+    <color name="homePageBackgroundColour">#FFFFFF</color>
+    <color name="connectTextColour">#A4AAB7</color>
+    <color name="connectBackground">#005400</color>
+    <color name="exploreTextColour">#000000</color>
+    <color name="exploreBackground">#F73AB7</color>
+
+
 </resources>
