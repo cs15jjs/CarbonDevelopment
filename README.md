@@ -10,7 +10,7 @@ GIT COMMANDS
 //git pull origin master
 
 //directs you to your BRANCH
-//git check -b Stacey
+//git checkout -b Stacey (or other names)
 
 //commit to your BRANCH
 //git commit -am “Commit title”
