@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import carbon.zeroevents.JSONParser;
+import carbon.zeroevents.MovieActivity;
 import carbon.zeroevents.R;
 
 /**
@@ -53,9 +54,9 @@ public class ExploreFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.i("Hello ListView", "You clicked item: " + id + " at position: " + position);
-                //Intent myIntent = new Intent(activity, MovieActivity.class);
+                Intent myIntent = new Intent(activity, MovieActivity.class);
                 MOVIE_ID = movieList.get((int) id).get("id");
-                //startActivity(myIntent);
+                startActivity(myIntent);
             }
         });
 
