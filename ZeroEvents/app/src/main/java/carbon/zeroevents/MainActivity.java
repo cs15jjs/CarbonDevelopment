@@ -54,29 +54,25 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                                              @Override
-                                              public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 
-                                              }
+            @Override
+            public void onPageSelected(int position) {
+               if (prevMenuItem != null) {
+                   prevMenuItem.setChecked(false);
+               } else {
+                   bottomNavigationView.getMenu().getItem(0).setChecked(false);
+               }
+               Log.d("page", "onPageSelected: " + position);
+               bottomNavigationView.getMenu().getItem(position).setChecked(true);
+               prevMenuItem = bottomNavigationView.getMenu().getItem(position);
+            }
 
-                                              @Override
-                                              public void onPageSelected(int position) {
-                                                  if (prevMenuItem != null) {
-                                                      prevMenuItem.setChecked(false);
-                                                  } else {
-                                                      bottomNavigationView.getMenu().getItem(0).setChecked(false);
-                                                  }
-                                                  Log.d("page", "onPageSelected: " + position);
-                                                  bottomNavigationView.getMenu().getItem(position).setChecked(true);
-                                                  prevMenuItem = bottomNavigationView.getMenu().getItem(position);
-
-                                              }
-
-                                              @Override
-                                              public void onPageScrollStateChanged(int state) {
-
-                                              }
-                                          });
+            @Override
+            public void onPageScrollStateChanged(int state) {}
+        });
+        
         viewPager.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event)
