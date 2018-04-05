@@ -55,7 +55,6 @@ public class ExploreFragment extends Fragment {
                 Log.i("Hello ListView", "You clicked item: " + id + " at position: " + position);
                 //Intent myIntent = new Intent(activity, MovieActivity.class);
                 MOVIE_ID = movieList.get((int) id).get("id");
-
                 //startActivity(myIntent);
             }
         });
