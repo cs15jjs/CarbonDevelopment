@@ -1,10 +1,15 @@
 package carbon.zeroevents;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +22,7 @@ import carbon.zeroevents.Fragments.ExploreFragment;
  * Created by Owner on 29/01/2018.
  */
 
-public class MovieActivity extends Activity {
+public class MovieActivity extends AppCompatActivity {
 
     private String TAG = MovieActivity.class.getSimpleName();
     Intent intent = getIntent();
@@ -28,8 +33,28 @@ public class MovieActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Get the view from new_activity.xml
-        setContentView(R.layout.activity_movie);
-        overviewTextView = (TextView)findViewById(R.id.full_movie_title);
+        setContentView(R.layout.movie_activity_details);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setImageResource(R.drawable.save_button);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        // Show the Up button in the action bar.
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        overviewTextView = (TextView)findViewById(R.id.toolbar_title);
         Toast.makeText(MovieActivity.this, "movie_id" + str, Toast.LENGTH_LONG).show();
         new WebPull().execute();
 
@@ -40,7 +65,7 @@ public class MovieActivity extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Toast.makeText(MovieActivity.this, "Json Data is downloading", Toast.LENGTH_LONG).show();
+            //Toast.makeText(MovieActivity.this, "Json Data is downloading", Toast.LENGTH_LONG).show();
 
         }
 
