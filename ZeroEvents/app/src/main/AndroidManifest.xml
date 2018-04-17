@@ -14,6 +14,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name="carbon.zeroevents.Manual_User.Login"/>
+        <activity android:name="carbon.zeroevents.Manual_User.SignUp"/>
         <activity android:name=".MovieActivity"></activity>
 
         <activity
