@@ -15,4 +15,6 @@
     <string name="hint_first">Enter First Name</string>
     <string name="hint_last">Enter Last Initial</string>
     <string name="hint_password">Enter Password</string>
+
+    <string name="createAccBut">Create Account ...</string>
 </resources>

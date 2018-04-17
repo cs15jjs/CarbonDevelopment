@@ -3,8 +3,6 @@ package carbon.zeroevents.Manual_User;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +21,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import carbon.zeroevents.Fragments.ConnectFragment;
 import carbon.zeroevents.MainActivity;
 import carbon.zeroevents.R;
 
@@ -31,73 +28,66 @@ import carbon.zeroevents.R;
  * Created by Owner on 16/04/2018.
  */
 
-public class Login extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = Login.class.getSimpleName();
-    private EditText email, password;
-    private Button login, signUp;
+public class SignUp extends AppCompatActivity {
+    private static final String TAG = SignUp.class.getSimpleName();
+    private EditText username, email, password, first_name, last_init;
+    private Button createAccButton;
     private ProgressDialog progressDialog;
     private UserSession session;
     private UserInfo userInfo;
-    private ViewPager mPagerAd;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_activity);
+        setContentView(R.layout.sign_up_activity);
 
         email = (EditText) findViewById(R.id.emailInput);
         password = (EditText) findViewById(R.id.passwordInput);
-        login = (Button) findViewById(R.id.loginButton);
-        signUp = (Button) findViewById(R.id.openSignUpButton);
+        username = (EditText) findViewById(R.id.usernameInput);
+        first_name = (EditText) findViewById(R.id.firstNameInput);
+        last_init = (EditText) findViewById(R.id.lastInitInput);
+        createAccButton = (Button) findViewById(R.id.createAccountButton);
         progressDialog = new ProgressDialog(this);
         session = new UserSession(this);
         userInfo = new UserInfo(this);
 
         if (session.isUserLoggedin()) {
             startActivity(new Intent(this, MainActivity.class));
-//          intent.putExtra("position", 2);
+//            intent.putExtra("position", 2);
             finish();
         }
 
-        login.setOnClickListener(this);
-        signUp.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.loginButton:
-                String uName = email.getText().toString().trim();
+        createAccButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String uName = username.getText().toString().trim();
+                String mail = email.getText().toString().trim();
                 String pass = password.getText().toString().trim();
-                login(uName, pass);
-                break;
+                String first = first_name.getText().toString().trim();
+                String last = last_init.getText().toString().trim();
 
-            case R.id.openSignUpButton:
-                startActivity(new Intent(this, SignUp.class));
-                break;
-        }
+                signUp(uName, mail, pass, first, last);
+            }
+        });
     }
 
-    private void login(final String email, final String password) {
-        //tag used to cancel the request
-        String tag_string_reg = "req_login";
-        progressDialog.setMessage("Logging in ...");
+    private void signUp(final String uName, final String mail, final String pass, final String first, final String last) {
+        //Tag to cancel the request
+        String tag_string_req = "req_signup";
+        progressDialog.setMessage("Signing you Up ..");
         progressDialog.show();
 
-        StringRequest strReq = new StringRequest(Request.Method.POST, Utils.LOGIN_URL, new Response.Listener<String>() {
-
+        StringRequest strReq = new StringRequest(Request.Method.POST, Utils.REGISTER_URL, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Login Response: " + response.toString());
+                Log.d(TAG, "Register Response: " + response.toString());
                 progressDialog.dismiss();
-
                 try {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
 
-                    //check for error node in json
+                    //Check for error node in json
                     if (!error) {
                         //now store the user in SQLite
                         JSONObject user = jObj.getJSONObject("user");
@@ -113,7 +103,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         userInfo.setLastInitial(l_init);
                         session.setLoggedin(true);
 
-                        Intent intent = new Intent(Login.this, MainActivity.class);
+                        Intent intent = new Intent(SignUp.this, MainActivity.class);
 //                        intent.putExtra("position", 2);
                         startActivity(intent);
                         finish();
@@ -131,7 +121,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Login error: " + error.getMessage());
+                Log.e(TAG, "Create account error: " + error.getMessage());
                 toast("Response Error Listener error occured");
                 progressDialog.hide();
             }
@@ -140,22 +130,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             protected Map<String, String> getParams() {
                 //Posting parameters to login URL
                 Map<String, String> params = new HashMap<>();
-                params.put("email", email);
-                params.put("password", password);
-                //params.put("username", username);
-
+                params.put("email", mail);
+                params.put("username", uName);
+                params.put("password", pass);
+                params.put("first_name", first);
+                params.put("last_init", last);
                 return params;
             }
         };
-
         //Adding request to the request queue
-        AndroidLoginController.getInstance().addToRequestQueue(strReq, tag_string_reg);
+        AndroidLoginController.getInstance().addToRequestQueue(strReq, tag_string_req);
+
     }
 
     private void toast(String x) {Toast.makeText(this, x, Toast.LENGTH_SHORT).show();}
-
-
-
-
 
 }
