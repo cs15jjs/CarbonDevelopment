@@ -1,6 +1,7 @@
 package carbon.zeroevents.Fragments;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,6 +21,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -33,6 +41,8 @@ import carbon.zeroevents.R;
 
 public class ExploreFragment extends Fragment {
 
+    public static final int CONNECTION_TIMEOUT = 10000;
+    public static final int READ_TIMEOUT = 15000;
     private Activity activity;
     public static String MOVIE_ID = "";
     private String TAG = "EXPLORE_ACTIVITY";
@@ -60,77 +70,131 @@ public class ExploreFragment extends Fragment {
             }
         });
 
-        new WebPull().execute();
+        new ServerPull().execute();
 
         return view;
     }
 
-    private class WebPull extends AsyncTask<Void, Void, Void> {
+    private class ServerPull extends AsyncTask<String, String, String> {
+
+        ProgressDialog pdLoading = new ProgressDialog(activity);
+        HttpURLConnection conn;
+        URL url = null;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Toast.makeText(activity,"Json Data is downloading",Toast.LENGTH_LONG).show();
 
+            pdLoading.setMessage("\tLoading...");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
         }
 
         @Override
-        protected Void doInBackground(Void... arg0) {
-            JSONParser sh = new JSONParser();
-            // Making a request to url and getting response
-            String url = "https://api.themoviedb.org/3/movie/upcoming?api_key=3df5f7f0fa2c63de5a5f0687a402d65f&language=en-GB&page=1&region=GB";
-            String jsonStr = sh.makeServiceCall(url);
+        protected String doInBackground(String ... params) {
 
-            Log.e(TAG, "Response from url: " + jsonStr);
-            if (jsonStr != null) {
-                try {
-                    JSONObject jsonObj = new JSONObject(jsonStr);
+            try {
 
-                    // Getting JSON Array node
-                    JSONArray movies = jsonObj.getJSONArray("results");
+                // Enter URL address where your json file resides
+                // Even you can make call to php file which returns json data
+                url = new URL("http://192.168.64.2/php_files/get_movie_info.php");
+                //url = new URL("http://10.0.2.2/php_files/get_movie_info.php");
 
-                    // looping through All Contacts
-                    for (int i = 0; i < movies.length(); i++) {
-                        JSONObject c = movies.getJSONObject(i);
-                        String id = c.getString("id");
-                        String movie_title = c.getString("title");
-                        String movie_overview = c.getString("overview");
-                        //String movie_release = c.getString("release_date");
-                        //String address = c.getString("address");
-                        //String gender = c.getString("gender");
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return e.toString();
+            }
+            try {
 
-                        // tmp hash map for single movie
-                        HashMap<String, String> movie = new HashMap<>();
+                // Setup HttpURLConnection class to send and receive data from php and mysql
+                conn = (HttpURLConnection) url.openConnection();
+                conn.setReadTimeout(READ_TIMEOUT);
+                conn.setConnectTimeout(CONNECTION_TIMEOUT);
+                conn.setRequestMethod("GET");
 
-                        // adding each child node to HashMap key => value
-                        movie.put("id", id);
-                        movie.put("title", movie_title);
-                        movie.put("overview", movie_overview);
-                        //movie.put("release_date", movie_release);
+                // setDoOutput to true as we recieve data from json file
+                conn.setDoOutput(true);
 
-                        // adding movies to movies list
-                        movieList.add(movie);
-                    }
-                } catch (final JSONException e) {
-                    Log.e(TAG, "Json parsing error: " + e.getMessage());
-                }
-            } else {
-                Log.e(TAG, "Couldn't get json from server.");
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+                return e1.toString();
             }
 
-            return null;
+            try {
+
+                int response_code = conn.getResponseCode();
+
+                // Check if successful connection made
+                if (response_code == HttpURLConnection.HTTP_OK) {
+
+                    // Read data sent from server
+                    InputStream input = conn.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+                    }
+                    String newResult = result.toString();
+                    newResult = newResult.substring(1, newResult.length() - 1);
+
+                    // Pass data to onPostExecute method
+                    return (newResult);
+
+                } else {
+
+                    return ("Unsuccessful");
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                return e.toString();
+            } finally {
+                conn.disconnect();
+            }
         }
 
         @Override
-        protected void onPostExecute(Void result) {
-            super.onPostExecute(result);
+        protected void onPostExecute(String result) {
+
+            pdLoading.dismiss();
+
+            pdLoading.dismiss();
+            try {
+                JSONArray movies = new JSONArray(result);
+
+                // looping through All Contacts
+                for (int i = 0; i < movies.length(); i++) {
+
+                    JSONObject c = movies.getJSONObject(i);
+
+                    String id = c.getString("movie_id");
+                    String movie_title = c.getString("movie_title");
+                    String movie_overview = c.getString("overview");
+
+                    // tmp hash map for single movie
+                    HashMap<String, String> movie = new HashMap<>();
+
+                    // adding each child node to HashMap key => value
+                    movie.put("movie_id", id);
+                    movie.put("movie_title", movie_title);
+                    movie.put("overview", movie_overview);
+
+                    // adding movies to movies list
+                    movieList.add(movie);
+                }
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+
             ListAdapter adapter = new SimpleAdapter(activity, movieList,
-                    R.layout.list_item, new String[]{ "title","overview"},
+                    R.layout.list_item, new String[]{ "movie_title","overview"},
                     new int[]{R.id.movie_title, R.id.movie_overview});
 
             lv.setAdapter(adapter);
-
-
         }
     }
 }
