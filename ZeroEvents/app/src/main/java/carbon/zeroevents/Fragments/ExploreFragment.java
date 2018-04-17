@@ -98,7 +98,7 @@ public class ExploreFragment extends Fragment {
                 // Enter URL address where your json file resides
                 // Even you can make call to php file which returns json data
                 url = new URL("http://192.168.64.2/php_files/get_movie_info.php");
-                //url = new URL("http://192.168.64.2/php_files/get_movie_info.php");
+                //url = new URL("http://10.0.2.2/php_files/get_movie_info.php");
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
@@ -174,9 +174,6 @@ public class ExploreFragment extends Fragment {
                     String id = c.getString("movie_id");
                     String movie_title = c.getString("movie_title");
                     String movie_overview = c.getString("overview");
-                    //String movie_release = c.getString("release_date");
-                    //String address = c.getString("address");
-                    //String gender = c.getString("gender");
 
                     // tmp hash map for single movie
                     HashMap<String, String> movie = new HashMap<>();
@@ -185,7 +182,6 @@ public class ExploreFragment extends Fragment {
                     movie.put("movie_id", id);
                     movie.put("movie_title", movie_title);
                     movie.put("overview", movie_overview);
-                    //movie.put("release_date", movie_release);
 
                     // adding movies to movies list
                     movieList.add(movie);

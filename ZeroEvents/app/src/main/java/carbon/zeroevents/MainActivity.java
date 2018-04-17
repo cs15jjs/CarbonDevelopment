@@ -1,5 +1,6 @@
 package carbon.zeroevents;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     MenuItem prevMenuItem;
     BottomNavigationView bottomNavigationView;
+    private int pageSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +32,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         viewPager = (ViewPager) findViewById(R.id.container);
+
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
+
+                int id = item.getItemId();
+
+                switch (id) {
                     case R.id.navigation_home:
                         viewPager.setCurrentItem(0);
                         return true;
