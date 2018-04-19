@@ -34,7 +34,7 @@ public class SettingsFragment extends Fragment {
      */
     public SettingsFragment() {
     }
-
+    //change
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static SettingsFragment newInstance(int columnCount) {
