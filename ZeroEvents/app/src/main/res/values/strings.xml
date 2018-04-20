@@ -16,5 +16,9 @@
     <string name="hint_last">Enter Last Initial</string>
     <string name="hint_password">Enter Password</string>
 
+    <string name="sign_up_button">SIGN UP</string>
+    <string name="log_in_button">LOG IN</string>
+    <string name="not_now_textview"><u>Not now, sign in later ...</u></string>
+
     <string name="createAccBut">Create Account ...</string>
 </resources>

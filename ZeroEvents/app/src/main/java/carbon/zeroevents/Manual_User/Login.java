@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -19,6 +20,7 @@ import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,11 +37,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = Login.class.getSimpleName();
     private EditText email, password;
     private Button login, signUp;
+    private TextView notNowTView;
     private ProgressDialog progressDialog;
     private UserSession session;
     private UserInfo userInfo;
-    private ViewPager mPagerAd;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         password = (EditText) findViewById(R.id.passwordInput);
         login = (Button) findViewById(R.id.loginButton);
         signUp = (Button) findViewById(R.id.openSignUpButton);
+        notNowTView = (TextView) findViewById(R.id.notNowTextView);
         progressDialog = new ProgressDialog(this);
         session = new UserSession(this);
         userInfo = new UserInfo(this);
@@ -62,6 +64,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         login.setOnClickListener(this);
         signUp.setOnClickListener(this);
+        notNowTView.setOnClickListener(this);
     }
 
     @Override
@@ -75,6 +78,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
             case R.id.openSignUpButton:
                 startActivity(new Intent(this, SignUp.class));
+                break;
+
+            case R.id.notNowTextView:
+                finish();
                 break;
         }
     }
