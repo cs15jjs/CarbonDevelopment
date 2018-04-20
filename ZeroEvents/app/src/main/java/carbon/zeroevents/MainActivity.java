@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.support.v7.widget.Toolbar;
 
 import carbon.zeroevents.Fragments.ConnectFragment;
 import carbon.zeroevents.Fragments.ExploreFragment;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     MenuItem prevMenuItem;
     BottomNavigationView bottomNavigationView;
     private int pageSelected;
+//    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         viewPager = (ViewPager) findViewById(R.id.container);
+//        toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -44,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (id) {
                     case R.id.navigation_home:
                         viewPager.setCurrentItem(0);
+//                        getSupportActionBar().setTitle("Home Selected");
                         return true;
                     case R.id.navigation_explore:
                         viewPager.setCurrentItem(1);

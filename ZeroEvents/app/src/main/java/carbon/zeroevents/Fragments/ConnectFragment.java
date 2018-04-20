@@ -23,7 +23,7 @@ import carbon.zeroevents.R;
 public class ConnectFragment extends Fragment {
 
     private Button logoutButton;
-    private TextView tvEmail, tvUsername, tvFirst, tvLast;
+    private TextView tvEmail, tvUsername, tvFirst, tvLast, loggedinTV;
     private UserSession session;
     private UserInfo userInfo;
     private Activity activity;
@@ -32,7 +32,7 @@ public class ConnectFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.connect_tab,container,false);
+        View view = inflater.inflate(R.layout.connect_tab, container, false);
 
         activity = this.getActivity();
 
@@ -44,20 +44,14 @@ public class ConnectFragment extends Fragment {
         tvUsername = (TextView) view.findViewById(R.id.textViewUsername);
         tvFirst = (TextView) view.findViewById(R.id.textViewFirstName);
         tvLast = (TextView) view.findViewById(R.id.textViewLast);
+        loggedinTV = (TextView) view.findViewById(R.id.textViewStatus);
 
         if (!session.isUserLoggedin()) {
+            loggedinTV.setText("YOU ARE NOT LOGGED IN ...");
             startActivity(new Intent(activity, Login.class));
         }
 
-        String username = userInfo.getKeyUsername();
-        String email = userInfo.getKeyUsername();
-        String firstN = userInfo.getKeyFirstName();
-        String lastI = userInfo.getKeyLastInitial();
-
-        tvUsername.setText(username);
-        tvEmail.setText(email);
-        tvFirst.setText(firstN);
-        tvLast.setText(lastI);
+        setText();
 
         logoutButton.setOnClickListener(new View.OnClickListener() {
 
@@ -66,9 +60,24 @@ public class ConnectFragment extends Fragment {
                 session.setLoggedin(false);
                 userInfo.clearUserInfo();
                 startActivity(new Intent(activity, Login.class));
+                loggedinTV.setText("YOU ARE NOT LOGGED IN ...");
+                setText();
             }
         });
 
         return view;
+    }
+
+    private void setText(){
+
+        String username = userInfo.getKeyUsername();
+        String email = userInfo.getKeyEmail();
+        String firstN = userInfo.getKeyFirstName();
+        String lastI = userInfo.getKeyLastInitial();
+
+        tvUsername.setText(username);
+        tvEmail.setText(email);
+        tvFirst.setText(firstN);
+        tvLast.setText(lastI);
     }
 }
