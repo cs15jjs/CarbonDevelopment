@@ -10,6 +10,10 @@
     <string name="hello_connect_fragment">Connect Fragment</string>
     <string name="hello_settings_fragment">Settings Fragment</string>
 
+    <string name="manualSignUpBut">Email Sign Up</string>
+    <string name="facebookSignUpBut">Login with Facebook</string>
+    <string name="googleSignUpBut">Login with Google+</string>
+
     <string name="hint_email">Enter Email</string>
     <string name="hint_username">Enter Username</string>
     <string name="hint_first">Enter First Name</string>
@@ -18,6 +22,5 @@
 
     <string name="createAccBut">Create Account ...</string>
 
-    <string name="facebookLoginBut">Login with Facebook</string>
-    <string name="googleLoginBut">Login with Google+</string>
+
 </resources>
