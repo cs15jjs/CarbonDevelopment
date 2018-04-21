@@ -17,4 +17,7 @@
     <string name="hint_password">Enter Password</string>
 
     <string name="createAccBut">Create Account ...</string>
+
+    <string name="facebookLoginBut">Login with Facebook</string>
+    <string name="googleLoginBut">Login with Google+</string>
 </resources>
