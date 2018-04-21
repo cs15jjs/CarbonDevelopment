@@ -31,4 +31,13 @@
         android:layout_below="@id/movie_title"
         android:ellipsize="end" />
 
+
+    <TextView
+        android:id="@+id/release_date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#785032"
+        android:layout_below="@id/movie_overview"
+        android:textStyle="bold" />
+
 </RelativeLayout>
