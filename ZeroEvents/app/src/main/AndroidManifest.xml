@@ -2,28 +2,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="carbon.zeroevents">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="carbon.zeroevents.Manual_User.AndroidLoginController"
+        android:name=".Manual_User.AndroidLoginController"
         android:allowBackup="true"
         android:icon="@mipmap/zero_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/zero_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name="carbon.zeroevents.Manual_User.Login"/>
-        <activity android:name="carbon.zeroevents.Manual_User.SignUp"/>
-        <activity android:name=".MovieActivity"></activity>
-
-        <activity
-            android:name=".MainActivity">
+        <activity android:name=".Manual_User.Login" />
+        <activity android:name=".Manual_User.SignUp" />
+        <activity android:name=".MovieActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Manual_User.LoginOptions"></activity>
     </application>
 
 </manifest>
