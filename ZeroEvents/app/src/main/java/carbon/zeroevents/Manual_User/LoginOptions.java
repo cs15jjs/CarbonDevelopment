@@ -17,6 +17,7 @@ import com.facebook.login.widget.LoginButton;
 
 import java.util.Arrays;
 
+import carbon.zeroevents.MainActivity;
 import carbon.zeroevents.R;
 
 public class LoginOptions extends AppCompatActivity {
@@ -56,17 +57,19 @@ public class LoginOptions extends AppCompatActivity {
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                facebookLoginBut.setText("Login Success\n"+loginResult.getAccessToken());
+                //facebookLoginBut.setText("Login Success\n"+loginResult.getAccessToken());
+                Intent intent = new Intent (LoginOptions.this, MainActivity.class);
+                startActivity(intent);
             }
 
             @Override
             public void onCancel() {
-                facebookLoginBut.setText("Login Canceled");
+                //facebookLoginBut.setText("Login Canceled");
             }
 
             @Override
             public void onError(FacebookException error) {
-            
+                //facebookLoginBut.setText("Login Error\n"+error.getMessage());
             }
         });
 
