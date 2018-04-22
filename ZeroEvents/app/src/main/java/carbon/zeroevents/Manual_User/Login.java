@@ -22,7 +22,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import carbon.zeroevents.Fragments.SignUpOptions;
 import carbon.zeroevents.MainActivity;
 import carbon.zeroevents.R;
 

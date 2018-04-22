@@ -1,4 +1,4 @@
-package carbon.zeroevents.Fragments;
+package carbon.zeroevents.Manual_User;
 
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
@@ -6,9 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import carbon.zeroevents.Fragments.SocialMediaSignUp;
-import carbon.zeroevents.Manual_User.SignUp;
-import carbon.zeroevents.Manual_User.UserSession;
 import carbon.zeroevents.R;
 
 /**
