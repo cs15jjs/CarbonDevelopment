@@ -5,7 +5,7 @@ import android.widget.Button;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
+import android.app.Activity;
 import carbon.zeroevents.R;
 
 /**
@@ -14,10 +14,11 @@ import carbon.zeroevents.R;
 
 public class SignUpOptions extends AppCompatActivity implements View.OnClickListener{
 
-    private Button manualSignUpBut;
-    private Button facebookSignUpBut;
-    private Button googleSignUpBut;
-    private UserSession session;
+     private Button manualSignUpBut;
+     private Button facebookSignUpBut;
+     private Button googleSignUpBut;
+     private Activity activity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class SignUpOptions extends AppCompatActivity implements View.OnClickList
         manualSignUpBut = (Button) findViewById(R.id.manualSignUpBut);
         facebookSignUpBut = (Button) findViewById(R.id.facebookSignUpBut);
         googleSignUpBut = (Button) findViewById(R.id.googleSignUpBut);
+        activity = this.getActivity();
 
         manualSignUpBut.setOnClickListener(this);
         facebookSignUpBut.setOnClickListener(this);
@@ -47,6 +49,11 @@ public class SignUpOptions extends AppCompatActivity implements View.OnClickList
 
             case R.id.googleSignUpBut:
                 startActivity(new Intent( this, SocialMediaSignUp.class));
+                break;
         }
+    }
+
+    public Activity getActivity() {
+        return activity;
     }
 }

@@ -51,6 +51,7 @@ public class SignUp extends AppCompatActivity {
         session = new UserSession(this);
         userInfo = new UserInfo(this);
 
+
         if (session.isUserLoggedin()) {
             startActivity(new Intent(this, MainActivity.class));
 //            intent.putExtra("position", 2);
