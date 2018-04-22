@@ -24,7 +24,12 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     MenuItem prevMenuItem;
     BottomNavigationView bottomNavigationView;
+<<<<<<< Updated upstream
     private int pageSelected;
+=======
+    public static String MOVIE_ID = "";
+
+>>>>>>> Stashed changes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
