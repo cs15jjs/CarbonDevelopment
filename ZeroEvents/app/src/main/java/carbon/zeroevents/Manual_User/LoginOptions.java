@@ -5,10 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
@@ -18,16 +21,20 @@ import carbon.zeroevents.R;
 
 public class LoginOptions extends AppCompatActivity {
 
-    private Button manualSignUpBut, facebookLogin;
+    private Button manualSignUpBut;
+    TextView facebookLoginBut;
+    LoginButton LoginButton;
+    CallbackManager callbackManager;
+    private static final String EMAIL = "email";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login_options);
 
         manualSignUpBut = (Button) findViewById(R.id.manualSignUpBut);
-        facebookLogin = (Button) findViewById(R.id.facebookLoginBut);
-
         manualSignUpBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,14 +42,48 @@ public class LoginOptions extends AppCompatActivity {
             }
         });
 
-
-
+        controls();
+        loginWithFacebook();
     }
+
 
     public void manual(){
         Intent intent = new Intent (this, SignUp.class);
         startActivity(intent);
     }
 
+    private void loginWithFacebook(){
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                facebookLoginBut.setText("Login Success\n"+loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+                facebookLoginBut.setText("Login Canceled");
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+            
+            }
+        });
+
+    }
+
+    private void controls(){
+        callbackManager = CallbackManager.Factory.create();
+        LoginButton = (LoginButton)findViewById(R.id.facebookLoginBut);
+        LoginButton.setReadPermissions(Arrays.asList(EMAIL));
+        facebookLoginBut = (TextView)findViewById(R.id.facebookLoginBut);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
 }
