@@ -98,4 +98,6 @@
     <string name="email">Email</string>
     <string name="log_out">LOG OUT</string>
     <string name="textview">TextView</string>
+    <string name="notif_option">TextView</string>
+    <string name="checkbox">CheckBox</string>
 </resources>
