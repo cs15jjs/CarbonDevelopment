@@ -28,7 +28,7 @@ public class ConnectFragment extends Fragment {
     private UserInfo userInfo;
     private Activity activity;
 
-    @Nullable
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 

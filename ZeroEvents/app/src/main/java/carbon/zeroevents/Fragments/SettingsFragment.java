@@ -33,10 +33,13 @@ public class SettingsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.settings_tab,container,false);
 
+        activity = this.getActivity();
+
         String[] settingOptions = new String[] {"Location", "Notifications","Accessibility", "Help", "About" };
         ListView listView = (ListView) view.findViewById(R.id.settingMenu) ;
 
-        ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.activity_list_item,settingOptions);
+        ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String> (activity,android.R.layout.simple_list_item_1,
+                settingOptions);
 
         listView.setAdapter(listViewAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

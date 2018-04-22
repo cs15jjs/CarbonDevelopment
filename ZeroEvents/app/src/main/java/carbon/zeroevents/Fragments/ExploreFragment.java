@@ -15,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,7 +30,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import carbon.zeroevents.JSONParser;
 import carbon.zeroevents.MovieActivity;
 import carbon.zeroevents.R;
 
@@ -192,9 +190,12 @@ public class ExploreFragment extends Fragment {
                 Log.e(TAG, "Json parsing error: " + e.getMessage());
             }
 
-            ListAdapter adapter = new SimpleAdapter(activity, movieList,
-                    R.layout.list_item, new String[]{ "movie_title","overview"},
-                    new int[]{R.id.movie_title, R.id.movie_overview});
+            ListAdapter adapter = new SimpleAdapter(activity,
+                    movieList,
+                    R.layout.list_item,
+                    new String[]{ "movie_title","overview"},
+                    new int[]{R.id.movie_title,
+                            R.id.movie_overview});
 
             lv.setAdapter(adapter);
         }
