@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#C31A3E</color>
-    <color name="colorPrimaryDark">#C31A3E</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrettyBlue">#55c1c2</color>
+    <color name="colorPrettyPink">#fd8ab1</color>
+    <color name="colorAccent">#ff17ae</color>
     <color name="homePageTextColour">#673AB7</color>
     <color name="homePageBackgroundColour">#FFFFFF</color>
     <color name="connectTextColour">#A4AAB7</color>

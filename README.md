@@ -2,6 +2,12 @@ Zero Events App - Group Project (Team 6)
 
 Must be placed in a directory named 'CarbonDevelopment'
 
+Dependencies:
+
+-Implementation ‘com.android.volley:volley:1.0.0’
+
+-Manifest.xml must allow permissions for internet use
+
 GIT COMMANDS 
 
 //to MERGE master and your branch LOCALLY
@@ -10,7 +16,7 @@ GIT COMMANDS
 //git pull origin master
 
 //directs you to your BRANCH
-//git checkout -b Stacey (or other names)
+//git checkout Stacey (or other names)
 
 //commit to your BRANCH
 //git commit -am “Commit title”

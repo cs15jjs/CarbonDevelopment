@@ -14,7 +14,7 @@ import carbon.zeroevents.R;
  * Created by Owner on 03/04/2018.
  */
 
-public class SettingsFragment extends Fragment {
+public class HomeFragment extends Fragment {
 
     private Activity activity;
 
@@ -22,7 +22,7 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.settings_tab,container,false);
+        View view = inflater.inflate(R.layout.home_tab,container,false);
 
         activity = this.getActivity();
 

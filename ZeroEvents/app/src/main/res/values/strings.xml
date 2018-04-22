@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Zero</string>
+    <string name="app_name">Zero Events</string>
     <string name="title_home">Home</string>
     <string name="title_explore">Explore</string>
     <string name="title_connect">Connect</string>
@@ -10,5 +10,11 @@
     <string name="hello_connect_fragment">Connect Fragment</string>
     <string name="hello_settings_fragment">Settings Fragment</string>
 
+    <string name="hint_email">Enter Email</string>
+    <string name="hint_username">Enter Username</string>
+    <string name="hint_first">Enter First Name</string>
+    <string name="hint_last">Enter Last Initial</string>
+    <string name="hint_password">Enter Password</string>
 
+    <string name="createAccBut">Create Account ...</string>
 </resources>
