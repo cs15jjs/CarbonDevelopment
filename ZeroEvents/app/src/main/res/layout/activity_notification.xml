@@ -6,22 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".SettingsPage.NotificationActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/notif_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
-
     <ListView
         android:id="@+id/notif_listview"
         android:layout_width="match_parent"
         android:layout_height="452dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="59dp" />
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>
