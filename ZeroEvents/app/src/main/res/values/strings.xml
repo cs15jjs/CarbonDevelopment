@@ -11,7 +11,6 @@
     <string name="hello_settings_fragment">Settings Fragment</string>
 
     <string name="manualSignUpBut">Email Sign Up</string>
-    <string name="facebookSignUpBut">Login with Facebook</string>
     <string name="googleSignUpBut">Login with Google+</string>
 
     <string name="hint_email">Enter Email</string>
@@ -21,6 +20,10 @@
     <string name="hint_password">Enter Password</string>
 
     <string name="createAccBut">Create Account ...</string>
+
+    <string name="facebook_app_id">381210072349834</string>
+    <string name="fb_login_protocol_scheme">fb381210072349834</string>
+
 
 
 </resources>

@@ -6,11 +6,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
+import java.util.Arrays;
+
 import carbon.zeroevents.R;
 
 public class LoginOptions extends AppCompatActivity {
 
-    private Button manualSignUpBut, facebookSignUpBut;
+    private Button manualSignUpBut, facebookLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +26,7 @@ public class LoginOptions extends AppCompatActivity {
         setContentView(R.layout.activity_login_options);
 
         manualSignUpBut = (Button) findViewById(R.id.manualSignUpBut);
-        facebookSignUpBut = (Button) findViewById(R.id.facebookSignUpBut);
+        facebookLogin = (Button) findViewById(R.id.facebookLoginBut);
 
         manualSignUpBut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,16 +35,14 @@ public class LoginOptions extends AppCompatActivity {
             }
         });
 
-        facebookSignUpBut.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                manual();
-            }
-        }));
+
+
     }
 
     public void manual(){
         Intent intent = new Intent (this, SignUp.class);
         startActivity(intent);
     }
+
+
 }
