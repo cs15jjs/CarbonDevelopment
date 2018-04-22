@@ -30,20 +30,20 @@ public class NotificationActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.notif_listview);
 
 
-        final List<NotificationChecklist> checklist = new ArrayList<>();
-        checklist.add(new NotificationChecklist(false, "Notifications Enabled"));
-        checklist.add(new NotificationChecklist(false, "Friend Requests"));
-        checklist.add(new NotificationChecklist(false, "Events"));
+        final List<NotificationChecklist> checklists = new ArrayList<>();
+        checklists.add(new NotificationChecklist(false, "Notifications Enabled"));
+        checklists.add(new NotificationChecklist(false, "Friend Requests"));
+        checklists.add(new NotificationChecklist(false, "Events"));
 
 
-        final CustomAdapter adapter = new CustomAdapter(this, checklist);
+        final CustomAdapter adapter = new CustomAdapter(this, checklists);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                NotificationChecklist box = checklist.get(i);
+                NotificationChecklist box = checklists.get(i);
 
                 if (box.isSelected())
                     box.setSelected(false);
@@ -51,10 +51,10 @@ public class NotificationActivity extends AppCompatActivity {
                 else
                     box.setSelected(true);
 
-                checklist.set(i, box);
+                checklists.set(i, box);
 
                 //now update adapter
-                adapter.updateRecords(checklist);
+                adapter.updateRecords(checklists);
 
             }
         });

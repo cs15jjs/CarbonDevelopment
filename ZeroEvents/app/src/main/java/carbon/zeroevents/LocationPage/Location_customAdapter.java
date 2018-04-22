@@ -1,5 +1,4 @@
-package carbon.zeroevents.NotificationPage;
-
+package carbon.zeroevents.LocationPage;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,23 +9,24 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import carbon.zeroevents.NotificationPage.NotificationChecklist;
 import carbon.zeroevents.R;
 
 
-public class CustomAdapter extends BaseAdapter {
+public class Location_customAdapter extends BaseAdapter {
 
     Activity activity;
-    List<NotificationChecklist> checklists;
+    List<LocationChecklist> checklists;
     LayoutInflater inflater;
 
 
 
 
-    public CustomAdapter(Activity activity) {
+    public Location_customAdapter(Activity activity) {
         this.activity = activity;
     }
 
-    public CustomAdapter(Activity activity, List<NotificationChecklist> checklists) {
+    public Location_customAdapter(Activity activity, List<LocationChecklist> checklists) {
         this.activity   = activity;
         this.checklists = checklists;
 
@@ -52,24 +52,24 @@ public class CustomAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        ViewHolder holder = null;
+        carbon.zeroevents.LocationPage.Location_customAdapter.ViewHolder holder = null;
 
         if (view == null){
 
-            view = inflater.inflate(R.layout.notif_list, viewGroup, false);
+            view = inflater.inflate(R.layout.location_list, viewGroup, false);
 
-            holder = new ViewHolder();
+            holder = new carbon.zeroevents.LocationPage.Location_customAdapter.ViewHolder();
 
-            holder.n_option = (TextView)view.findViewById(R.id.n_option);
+            holder.option = (TextView)view.findViewById(R.id.option);
             holder.ivCheckBox = (ImageView) view.findViewById(R.id.ivCheckBox);
 
             view.setTag(holder);
         }else
-            holder = (ViewHolder)view.getTag();
+            holder = (carbon.zeroevents.LocationPage.Location_customAdapter.ViewHolder)view.getTag();
 
-        NotificationChecklist box = checklists.get(i);
+        LocationChecklist box = checklists.get(i);
 
-        holder.n_option.setText(box.getOption());
+        holder.option.setText(box.getOption());
 
         if (box.isSelected())
             holder.ivCheckBox.setBackgroundResource(R.drawable.checked);
@@ -81,7 +81,7 @@ public class CustomAdapter extends BaseAdapter {
 
     }
 
-    public void updateRecords(List<NotificationChecklist> checklists){
+    public void updateRecords(List<LocationChecklist> checklists){
         this.checklists = checklists;
 
         notifyDataSetChanged();
@@ -89,9 +89,11 @@ public class CustomAdapter extends BaseAdapter {
 
     class ViewHolder{
 
-        TextView n_option;
+        TextView option;
         ImageView ivCheckBox;
 
     }
 }
+
+
 
