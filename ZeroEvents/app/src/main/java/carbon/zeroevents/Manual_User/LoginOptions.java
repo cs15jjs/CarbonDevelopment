@@ -60,19 +60,19 @@ public class LoginOptions extends AppCompatActivity {
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                //facebookLoginBut.setText("Login Success\n"+loginResult.getAccessToken());
-                Intent intent = new Intent (LoginOptions.this, MainActivity.class);
+                facebookLoginBut.setText("Login Success\n"+loginResult.getAccessToken());
+                Intent intent = new Intent(LoginOptions.this, MainActivity.class);
                 startActivity(intent);
             }
 
             @Override
             public void onCancel() {
-                //facebookLoginBut.setText("Login Canceled");
+                facebookLoginBut.setText("Login Canceled");
             }
 
             @Override
             public void onError(FacebookException error) {
-                //facebookLoginBut.setText("Login Error\n"+error.getMessage());
+                facebookLoginBut.setText("Login Error\n"+error.getMessage());
             }
         });
 
