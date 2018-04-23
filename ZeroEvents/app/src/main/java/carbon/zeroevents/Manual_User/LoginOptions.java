@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
 
+import carbon.zeroevents.Fragments.ConnectFragment;
 import carbon.zeroevents.MainActivity;
 import carbon.zeroevents.R;
 
