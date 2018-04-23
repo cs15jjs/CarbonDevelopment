@@ -32,7 +32,7 @@
         android:layout_marginTop="70dp"
         android:fontFamily="@font/roboto_thin"
         android:text="@string/signUpTxt"
-        android:textColor="@color/homePageBackgroundColour"
+        android:textColor="@color/white"
         android:textSize="50sp"
         android:textStyle="bold" />
 

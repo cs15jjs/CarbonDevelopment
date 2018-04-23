@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 public class UserInfo {
     private static final String TAG = UserSession.class.getSimpleName();
     private static final String PREF_NAME = "userinfo";
+    private static final String KEY_USER_ID = "user_id";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_FIRST_NAME = "first_name";
@@ -44,16 +45,22 @@ public class UserInfo {
         editor.apply();
     }
 
+    public void setUserID(String user_id){
+        editor.putString(KEY_USER_ID, user_id);
+        editor.apply();
+    }
+
     public void clearUserInfo(){
         editor.clear();
         editor.commit();
     }
+    public String getKeyUserID(){return prefs.getString(KEY_USER_ID, "");}
 
-    public String getKeyUsername(){return prefs.getString(KEY_USERNAME, "");}
+    public String getKeyUsername(){return prefs.getString(KEY_USERNAME, "Username");}
 
-    public String getKeyEmail(){return prefs.getString(KEY_EMAIL, "");}
+    public String getKeyEmail(){return prefs.getString(KEY_EMAIL, "Email");}
 
-    public String getKeyFirstName(){return prefs.getString(KEY_FIRST_NAME, "");}
+    public String getKeyFirstName(){return prefs.getString(KEY_FIRST_NAME, "First Name");}
 
-    public String getKeyLastInitial(){return prefs.getString(KEY_LAST_INITIAL, "");}
+    public String getKeyLastInitial(){return prefs.getString(KEY_LAST_INITIAL, "Last Initial");}
 }
