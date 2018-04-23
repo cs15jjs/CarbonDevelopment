@@ -14,6 +14,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="121dp"
+        android:background="@android:color/white"
         android:fontFamily="@font/roboto_thin"
         android:padding="20dp"
         android:text="@string/manualSignUpBut"
@@ -25,13 +26,14 @@
         android:layout_width="1000dp"
         android:layout_height="80dp"
         android:layout_above="@+id/manualSignUpBut"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="27dp"
         android:fontFamily="@font/roboto_thin"
         android:padding="20dp"
         android:text="@string/facebookLoginBut"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/signUpTxt"
@@ -58,6 +60,17 @@
         android:text="@string/signUpIntroTxt"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="1000dp"
+        android:layout_height="80dp"
+        android:layout_alignBottom="@+id/facebookLoginBut"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/white"
+        android:fontFamily="@font/roboto_thin"
+        android:text="TextView"
+        android:textAlignment="center" />
 
 
 </RelativeLayout>
