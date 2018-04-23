@@ -28,12 +28,8 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-<<<<<<< Updated upstream
-import carbon.zeroevents.Fragments.ExploreFragment;
-=======
 import java.util.HashMap;
 import java.util.Map;
->>>>>>> Stashed changes
 
 /**
  * Created by Jo on 29/01/2018.
@@ -42,18 +38,12 @@ import java.util.Map;
 public class MovieActivity extends AppCompatActivity {
 
     private String TAG = MovieActivity.class.getSimpleName();
-<<<<<<< Updated upstream
-    Intent intent = getIntent();
-    String str = ExploreFragment.MOVIE_ID;
-    TextView overviewTextView;
-=======
     String str = MainActivity.MOVIE_ID;
     TextView toolbar_title, overviewTV, releaseTV, popularityTV, sorrynoVidTV;
     ImageView movieIV, ratingIV;
     JSONObject jsonObj;
     String youtubeKey;
     String URL = "http://orbiculate-captain.000webhostapp.com/Jo/get_movie_trailer.php";
->>>>>>> Stashed changes
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,6 +70,7 @@ public class MovieActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        toolbar_title = findViewById(R.id.toolbar_title);
         overviewTV = findViewById(R.id.overviewTV);
         releaseTV = findViewById(R.id.releaseTV);
         popularityTV = findViewById(R.id.popularityTV);
@@ -193,7 +184,7 @@ public class MovieActivity extends AppCompatActivity {
 
     private void youtubeServerPull() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -221,9 +212,11 @@ public class MovieActivity extends AppCompatActivity {
                 params.put("movie_id", str);
                 return params;
             }
+
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+        requestQueue.cancelAll(this);
     }
 
     private void initWebView() {

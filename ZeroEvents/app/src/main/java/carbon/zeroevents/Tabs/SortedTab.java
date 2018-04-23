@@ -48,7 +48,6 @@ public class SortedTab extends Fragment {
     private String TAG = "SORTED_TAB_FRAGMENT";
     private ListView lv;
     ArrayList<HashMap<String, String>> movieList;
-    private ViewPager viewPager;
 
 
     @Nullable
@@ -67,7 +66,9 @@ public class SortedTab extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.i("Hello ListView", "You clicked item: " + id + " at position: " + position);
                 Intent myIntent = new Intent(activity, MovieActivity.class);
-                MainActivity.MOVIE_ID = movieList.get((int) id).get("id");
+                MainActivity.MOVIE_ID = movieList.get((int) id).get("movie_id");
+                String test = MainActivity.MOVIE_ID;
+                Log.e("Movie ID Passed: ", "Movie_ID from sortedtab=" + test);
                 startActivity(myIntent);
             }
         });

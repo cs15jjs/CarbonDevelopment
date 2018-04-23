@@ -34,7 +34,7 @@
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LOG IN"
+        android:text="@string/log_in_button"
         android:padding="20dp"
         android:layout_gravity="center"
         tools:layout_editor_absoluteX="96dp"
@@ -44,10 +44,18 @@
         android:id="@+id/openSignUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SIGN UP"
+        android:text="@string/sign_up_button"
         android:padding="20dp"
         android:layout_gravity="center"
         tools:layout_editor_absoluteX="96dp"
         tools:layout_editor_absoluteY="309dp" />
+
+    <TextView
+        android:id="@+id/notNowTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/not_now_textview"
+        android:padding="20dp"
+        android:layout_gravity="center"/>
 
 </LinearLayout>
