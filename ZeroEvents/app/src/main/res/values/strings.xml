@@ -11,6 +11,8 @@
     <string name="hello_settings_fragment">Settings Fragment</string>
 
     <string name="manualSignUpBut">Email Sign Up</string>
+    <string name="signUpIntroTxt">To add events to your list and see what your friends are following you will need an account </string>
+    <string name="signUpTxt">Sign Up</string>
     <string name="facebookLoginBut">Continue with Facebook</string>
     <string name="googleSignUpBut">Login with Google+</string>
 

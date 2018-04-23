@@ -6,7 +6,7 @@
     <color name="colorPrettyPink">#fd8ab1</color>
     <color name="colorAccent">#c31a3e</color>
     <color name="homePageTextColour">#673AB7</color>
-    <color name="homePageBackgroundColour">#FFFFFF</color>
+    <color name="homePageBackgroundColour">#ffffff</color>
     <color name="connectTextColour">#A4AAB7</color>
     <color name="connectBackground">#005400</color>
     <color name="exploreTextColour">#000000</color>

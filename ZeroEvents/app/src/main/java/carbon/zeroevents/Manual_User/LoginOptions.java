@@ -25,7 +25,6 @@ import carbon.zeroevents.R;
 public class LoginOptions extends AppCompatActivity {
 
     private Button manualSignUpBut;
-    TextView facebookLoginBut;
     LoginButton LoginButton;
     CallbackManager callbackManager;
     private static final String EMAIL = "email";
@@ -60,19 +59,17 @@ public class LoginOptions extends AppCompatActivity {
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                facebookLoginBut.setText("Login Success\n"+loginResult.getAccessToken());
                 Intent intent = new Intent(LoginOptions.this, MainActivity.class);
                 startActivity(intent);
             }
 
             @Override
             public void onCancel() {
-                facebookLoginBut.setText("Login Canceled");
             }
 
             @Override
             public void onError(FacebookException error) {
-                facebookLoginBut.setText("Login Error\n"+error.getMessage());
+
             }
         });
 
@@ -82,7 +79,6 @@ public class LoginOptions extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
         LoginButton = (LoginButton)findViewById(R.id.facebookLoginBut);
         LoginButton.setReadPermissions(Arrays.asList(EMAIL));
-        facebookLoginBut = (TextView)findViewById(R.id.facebookLoginBut);
     }
 
 
