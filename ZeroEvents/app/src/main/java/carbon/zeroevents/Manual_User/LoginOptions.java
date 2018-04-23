@@ -28,6 +28,7 @@ public class LoginOptions extends AppCompatActivity {
     LoginButton LoginButton;
     CallbackManager callbackManager;
     private static final String EMAIL = "email";
+    private UserSession session;
 
 
     @Override
@@ -35,7 +36,7 @@ public class LoginOptions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login_options);
-
+        session = new UserSession(this);
         manualSignUpBut = (Button) findViewById(R.id.manualSignUpBut);
         manualSignUpBut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +50,7 @@ public class LoginOptions extends AppCompatActivity {
             public void onClick(View v) {
                 controls();
                 loginWithFacebook();
+                session.setLoggedin(true);
                 Intent intent = new Intent(LoginOptions.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -69,6 +71,7 @@ public class LoginOptions extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
                 Intent intent = new Intent(LoginOptions.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
 
             @Override
@@ -77,7 +80,6 @@ public class LoginOptions extends AppCompatActivity {
 
             @Override
             public void onError(FacebookException error) {
-
             }
         });
 
@@ -85,7 +87,6 @@ public class LoginOptions extends AppCompatActivity {
 
     private void controls(){
         callbackManager = CallbackManager.Factory.create();
-
         LoginButton.setReadPermissions(Arrays.asList(EMAIL));
     }
 
