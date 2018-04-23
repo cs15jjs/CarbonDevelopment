@@ -28,8 +28,16 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import carbon.zeroevents.Manual_User.Login;
+import carbon.zeroevents.Manual_User.UserInfo;
+import carbon.zeroevents.Manual_User.UserSession;
 
 /**
  * Created by Jo on 29/01/2018.
@@ -42,8 +50,12 @@ public class MovieActivity extends AppCompatActivity {
     TextView toolbar_title, overviewTV, releaseTV, popularityTV, sorrynoVidTV;
     ImageView movieIV, ratingIV;
     JSONObject jsonObj;
-    String youtubeKey;
+    String youtubeKey, movie_release, movie_title;
     String URL = "http://orbiculate-captain.000webhostapp.com/Jo/get_movie_trailer.php";
+    long today_timeInMillis, end_timeInMillis;
+    FloatingActionButton fab;
+    private UserInfo userInfo;
+    private UserSession userSession;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,13 +66,25 @@ public class MovieActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        toolbar_title = findViewById(R.id.toolbar_title);
+        overviewTV = findViewById(R.id.overviewTV);
+        releaseTV = findViewById(R.id.releaseTV);
+        popularityTV = findViewById(R.id.popularityTV);
+        movieIV = findViewById(R.id.movieIV);
+        ratingIV = findViewById(R.id.rating);
+        userInfo = new UserInfo(this);
+        userSession = new UserSession(this);
+
+        fab = findViewById(R.id.fab);
         fab.setImageResource(R.drawable.save_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if (userSession.isUserLoggedin()){
+                    new AddMoviePush().execute();
+                }else {
+                    startActivity(new Intent(MovieActivity.this, Login.class));
+                }
             }
         });
 
@@ -70,18 +94,48 @@ public class MovieActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        toolbar_title = findViewById(R.id.toolbar_title);
-        overviewTV = findViewById(R.id.overviewTV);
-        releaseTV = findViewById(R.id.releaseTV);
-        popularityTV = findViewById(R.id.popularityTV);
-        movieIV = findViewById(R.id.movieIV);
-        ratingIV = findViewById(R.id.rating);
-
         Toast.makeText(MovieActivity.this, "movie_id" + str, Toast.LENGTH_LONG).show();
         new WebPull().execute();
 
         youtubeServerPull();
 
+    }
+
+    private class AddMoviePush extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            String end_date = movie_release;
+            Calendar todaysDate = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date final_end_date = sdf.parse(end_date);
+                today_timeInMillis = todaysDate.getTimeInMillis();
+                end_timeInMillis = final_end_date.getTime();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            String user_id = userInfo.getKeyUserID();
+            String new_URL = "http://orbiculate-captain.000webhostapp.com/Mario/addMovie.php/?userID=" + user_id + "&movieID=" + str;
+            new_URL += "&movieTitle=" + movie_title.replace(" ", "%20") + "&releaseDate=" + end_timeInMillis + "&dateAdded=" + today_timeInMillis;
+
+            Log.e(TAG, "Url: " + new_URL);
+
+            JSONParser sh = new JSONParser();
+            String jsonStr = sh.makeServiceCall(new_URL);
+
+            Log.e(TAG, "Response from url: " + jsonStr);
+            if (jsonStr != null) {
+                fab.setImageResource(R.drawable.saved_button);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Toast.makeText(MovieActivity.this, "Your movie has been saved." , Toast.LENGTH_LONG).show();
+
+        }
     }
 
     private class WebPull extends AsyncTask<Void, Void, Void> {
@@ -131,6 +185,7 @@ public class MovieActivity extends AppCompatActivity {
             }
             return null;
         }
+
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
@@ -138,8 +193,8 @@ public class MovieActivity extends AppCompatActivity {
                 // Getting movie information movie
                 String backdrop_path = jsonObj.getString("backdrop_path");
                 String poster_path = jsonObj.getString("poster_path");
-                String movie_title = jsonObj.getString("title");
-                String movie_release = jsonObj.getString("release_date");
+                movie_title = jsonObj.getString("title");
+                movie_release = jsonObj.getString("release_date");
                 String movie_overview = jsonObj.getString("overview");
                 int popularity = jsonObj.getInt("popularity");
 
@@ -193,7 +248,7 @@ public class MovieActivity extends AppCompatActivity {
                         if (response.length() > 2) {
                             youtubeKey = response;
                             initWebView();
-                        }else {
+                        } else {
                             sorrynoVidTV = findViewById(R.id.sorryNoVidTV);
                             sorrynoVidTV.setVisibility(View.VISIBLE);
                             sorrynoVidTV.setText(R.string.oop_sorry);
@@ -222,7 +277,7 @@ public class MovieActivity extends AppCompatActivity {
     private void initWebView() {
         WebView webview = findViewById(R.id.trailer_webview);
 
-        webview.setWebViewClient(new WebViewClient(){
+        webview.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 return false;

@@ -91,12 +91,14 @@ public class SignUp extends AppCompatActivity {
                     if (!error) {
                         //now store the user in SQLite
                         JSONObject user = jObj.getJSONObject("user");
+                        String uID = user.getString("user_id");
                         String uName = user.getString("username");
                         String email = user.getString("email");
                         String f_name = user.getString("first_name");
                         String l_init = user.getString("last_init");
 
                         //inserting row in users tables
+                        userInfo.setUserID(uID);
                         userInfo.setEmail(email);
                         userInfo.setUsername(uName);
                         userInfo.setFirstName(f_name);

@@ -16,7 +16,7 @@ foreach($result_array['results'] as $row)
 // 	{
 // 		foreach ($ra as $row)
 // 		{
-	$query = "INSERT INTO id5457279_zero_db . movie_details (movie_id, movie_title, overview, release_date, image) SEECT * FROM (SELECT '".$row['id']."', '".$row['title']."', '".$row['overview']."', '".$row['release_date']."', '".$row['poster_path']."') AS tmp WHERE NOT EXISTS (SELECT movie_id FROM movie_details WHERE movie_id = '".$row['id']."') LIMIT 1;";
+	$query = "INSERT INTO id5457279_zero_db . movie_details (movie_id, movie_title, overview, release_date, image) SELECT * FROM (SELECT '".$row['id']."', '".$row['title']."', '".$row['overview']."', '".$row['release_date']."', '".$row['poster_path']."') AS tmp WHERE NOT EXISTS (SELECT movie_id FROM movie_details WHERE movie_id = '".$row['id']."') LIMIT 1;";
 	
 	mysqli_query($con, $query);
 		}
