@@ -43,9 +43,17 @@ public class LoginOptions extends AppCompatActivity {
                 manual();
             }
         });
+        LoginButton = (LoginButton)findViewById(R.id.facebookLoginBut);
+        LoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                controls();
+                loginWithFacebook();
+                Intent intent = new Intent(LoginOptions.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        controls();
-        loginWithFacebook();
     }
 
 
@@ -77,7 +85,7 @@ public class LoginOptions extends AppCompatActivity {
 
     private void controls(){
         callbackManager = CallbackManager.Factory.create();
-        LoginButton = (LoginButton)findViewById(R.id.facebookLoginBut);
+
         LoginButton.setReadPermissions(Arrays.asList(EMAIL));
     }
 
