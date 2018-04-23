@@ -5,6 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +25,11 @@ import carbon.zeroevents.R;
 
 public class HelpActivity extends AppCompatActivity {
 
-private RecyclerView recyclerView;
-private RecyclerView.Adapter adapter;
+    private static final String URL_DATA = "http://orbiculate-captain.000webhostapp.com/Alysha/FAQ.php";
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
 
-private List<HelpList> listitems;
+    private List<HelpList> listitems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +42,54 @@ private List<HelpList> listitems;
 
         listitems = new ArrayList<>();
 
-        for(int i = 0 ; i <= 10 ; i++)
-        { HelpList listitem = new HelpList(
-            "Topic" + i,
-            "Help around the topic is found in here"
-            );
+        loadRecyclerViewData();
 
-        listitems.add(listitem);
 
-        }
+    }
+    private void loadRecyclerViewData(){
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,
+                URL_DATA,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        try{
 
-        adapter = new MyAdapter(listitems,this);
-        recyclerView.setAdapter(adapter);
+                        JSONObject jsonObject = new JSONObject(s);
+                            JSONArray array = jsonObject.getJSONArray("FAQ");
+
+                            for(int i = 0; i<array.length();i++){
+                                JSONObject o = array.getJSONObject(i);
+                                HelpList item = new HelpList(
+                                        o.getString("Topics"),
+                                        o.getString("Answer")
+
+                                );
+
+                                listitems.add(item);
+                            }
+
+                            adapter = new MyAdapter(listitems,getApplicationContext());
+                            recyclerView.setAdapter(adapter);
+
+                    }catch(JSONException e)
+
+                    {
+                        e.printStackTrace();
+                    }
+                }
+            },
+
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        );
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
     }
 
 
