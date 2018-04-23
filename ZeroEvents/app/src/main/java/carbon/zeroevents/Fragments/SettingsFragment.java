@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import carbon.zeroevents.R;
 
@@ -27,7 +28,10 @@ public class SettingsFragment extends Fragment {
         activity = this.getActivity();
 
 
-
         return view;
     }
+
+
+
+
 }

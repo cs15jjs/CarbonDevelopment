@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+
+    <color name="colorPrimary">#c31a3e</color>
+    <color name="colorPrimaryDark">#c31a3e</color>
     <color name="colorPrettyBlue">#55c1c2</color>
     <color name="colorPrettyPink">#fd8ab1</color>
     <color name="colorAccent">#ff17ae</color>
+    <color name="colorAccent1">#c31a3e</color>
     <color name="homePageTextColour">#673AB7</color>
-    <color name="white">#FFFFFF</color>
+    <color name="homePageBackgroundColour">#FFFFFF</color>
     <color name="connectTextColour">#A4AAB7</color>
     <color name="connectBackground">#005400</color>
     <color name="exploreTextColour">#000000</color>
     <color name="exploreBackground">#F73AB7</color>
-
+    <color name="white">#FFFFFF</color>
 
 </resources>
