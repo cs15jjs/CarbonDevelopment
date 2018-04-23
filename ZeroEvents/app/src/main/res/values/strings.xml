@@ -16,10 +16,19 @@
     <string name="hint_last">Enter Last Initial</string>
     <string name="hint_password">Enter Password</string>
 
+
     <string name="sign_up_button">SIGN UP</string>
     <string name="log_in_button">LOG IN</string>
     <string name="log_out_button">LOG OUT</string>
     <string name="not_now_textview"><u>Not now, sign in later ...</u></string>
+    <string name="oop_sorry">Oops … No video available!</string>
+
+    <string name="popularity_text">Popularity …</string>
+    <string name="release_date">Release Date: %1$s</string>
+    <string name="not_hot">NOT HOT!</string>
+    <string name="warm">WARM!</string>
+    <string name="hot">HOT!</string>
+    <string name="hot_hot_hot">HOT HOT HOT!!!</string>
 
     <string name="createAccBut">Create Account ...</string>
     <string name="logged_in">YOU ARE LOGGED IN ...</string>

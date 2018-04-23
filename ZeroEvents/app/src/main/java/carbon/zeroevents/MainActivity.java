@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     MenuItem prevMenuItem;
     BottomNavigationView bottomNavigationView;
+    private int pageSelected;
+    public static String MOVIE_ID = "";
 
 
     @Override

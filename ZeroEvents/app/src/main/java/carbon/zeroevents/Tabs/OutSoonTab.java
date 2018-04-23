@@ -31,6 +31,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import carbon.zeroevents.MainActivity;
 import carbon.zeroevents.MovieActivity;
 import carbon.zeroevents.R;
 
@@ -44,11 +45,9 @@ public class OutSoonTab extends Fragment{
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
     private Activity activity;
-    public static String MOVIE_ID = "";
     private String TAG = "OUT_SOON_TAB_FRAGMENT";
     private ListView lv;
     ArrayList<HashMap<String, String>> movieList;
-    private ViewPager viewPager;
 
 
     @Nullable
@@ -67,7 +66,9 @@ public class OutSoonTab extends Fragment{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.i("Hello ListView", "You clicked item: " + id + " at position: " + position);
                 Intent myIntent = new Intent(activity, MovieActivity.class);
-                MOVIE_ID = movieList.get((int) id).get("id");
+                MainActivity.MOVIE_ID = movieList.get((int) id).get("movie_id");
+                String test = MainActivity.MOVIE_ID;
+                Log.e("Movie ID Passed: ", "Movie_ID from outsoontab=" + test);
                 startActivity(myIntent);
             }
         });
