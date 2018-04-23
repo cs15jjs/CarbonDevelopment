@@ -59,5 +59,31 @@
         android:text="@string/manualSignUpBut"
         android:textAllCaps="false" />
 
+    <TextView
+        android:id="@+id/TV_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="46dp"
+        android:layout_marginStart="34dp" />
+
+    <TextView
+        android:id="@+id/TV_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TV_name"
+        android:layout_alignBottom="@+id/TV_name"
+        android:layout_alignEnd="@+id/signUpTxt"
+        android:layout_marginEnd="43dp" />
+
+    <TextView
+        android:id="@+id/TV_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/signUpIntroTxt"
+        android:layout_alignTop="@+id/TV_email"
+        android:text="TextView" />
+
 
 </RelativeLayout>
