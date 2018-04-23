@@ -122,7 +122,3 @@ public class LoginOptions extends AppCompatActivity {
     }
 
 }
-//session.setLoggedin(true);
-//
-//        Intent intent = new Intent(LoginOptions.this, MainActivity.class);
-//        startActivity(intent);
