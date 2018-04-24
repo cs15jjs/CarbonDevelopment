@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp">
-    <!--android:backgroud="@color/colorText"-->
+    <!--android:background="@color/colorWhite"-->   <!--Change the background colour of the expandable list title-->
 
 
     <TextView
@@ -11,6 +11,7 @@
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
         android:textSize="16dp"
         android:textColor="@color/colorBlack"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
