@@ -56,6 +56,7 @@ public class MovieActivity extends AppCompatActivity {
     FloatingActionButton fab;
     private UserInfo userInfo;
     private UserSession userSession;
+    String newjsonstr;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -124,15 +125,19 @@ public class MovieActivity extends AppCompatActivity {
             String jsonStr = sh.makeServiceCall(new_URL);
 
             Log.e(TAG, "Response from url: " + jsonStr);
-            if (jsonStr != null) {
-                fab.setImageResource(R.drawable.saved_button);
-            }
+            newjsonstr = jsonStr;
+//            if (jsonStr != null) {
+//                fab.setImageResource(R.drawable.saved_button);
+//            }
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            if (newjsonstr != null) {
+                fab.setImageResource(R.drawable.saved_button);
+            }
             Toast.makeText(MovieActivity.this, "Your movie has been saved." , Toast.LENGTH_LONG).show();
 
         }
