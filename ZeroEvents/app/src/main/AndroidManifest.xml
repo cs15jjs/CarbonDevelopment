@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/zero_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".Manual_User.Login" />
         <activity android:name=".Manual_User.SignUp" />
         <activity android:name=".MovieActivity" />
@@ -25,7 +26,7 @@
         <activity android:name=".SettingsPage.LocationActivity" />
         <activity android:name=".SettingsPage.NotificationActivity" />
         <activity android:name=".SettingsPage.AboutActivity" />
-        <activity android:name=".SettingsPage.Accessibility" />
+        <activity android:name=".SettingsPage.Accessibility"/>
         <activity android:name=".SettingsPage.HelpActivity"></activity>
     </application>
 
