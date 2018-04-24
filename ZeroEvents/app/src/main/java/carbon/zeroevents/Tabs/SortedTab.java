@@ -190,7 +190,7 @@ public class SortedTab extends Fragment {
             }
 
             ListAdapter adapter = new SimpleAdapter(activity, movieList,
-                    R.layout.list_item, new String[]{"movie_title", "overview"},
+                    R.layout.tab_list_item, new String[]{"movie_title", "overview"},
                     new int[]{R.id.movie_title, R.id.movie_overview});
 
             lv.setAdapter(adapter);
