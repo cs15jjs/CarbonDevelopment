@@ -59,18 +59,24 @@ public class LoginOptions extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+
                 String userid = loginResult.getAccessToken().getUserId();
 
                 GraphRequest graphrequest = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
-                        displayUserInfo(object);
+                        //displayUserInfo(object);
                     }
                 });
                 Bundle parameters = new Bundle();
                 parameters.putString("fields", "first_name, last_name, email, id");
                 graphrequest.setParameters(parameters);
                 graphrequest.executeAsync();
+
+                session.setLoggedin(true);
+
+                Intent intent = new Intent(LoginOptions.this, MainActivity.class);
+                startActivity(intent);
 
             }
 
