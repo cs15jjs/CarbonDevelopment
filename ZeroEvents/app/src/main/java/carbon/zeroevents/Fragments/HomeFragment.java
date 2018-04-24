@@ -93,12 +93,6 @@ public class HomeFragment extends Fragment {
         }
 
 
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-
-//        adapter = new VocabularyAdapter(getActivity(), arrayList);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setLayoutManager(linearLayoutManager);
-//        recyclerView.setAdapter(adapter);
     }
 
 }
