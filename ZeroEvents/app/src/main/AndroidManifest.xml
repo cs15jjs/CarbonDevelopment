@@ -15,7 +15,9 @@
 
         <activity android:name="carbon.zeroevents.Manual_User.Login"/>
         <activity android:name="carbon.zeroevents.Manual_User.SignUp"/>
-        <activity android:name=".MovieActivity"></activity>
+        <activity android:name=".MovieActivity"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop"/>
 
         <activity
             android:name=".MainActivity">
