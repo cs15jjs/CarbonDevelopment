@@ -2,14 +2,20 @@ package carbon.zeroevents.ListCards;
 
 
 import android.app.Activity;
+<<<<<<< HEAD
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+=======
+import android.os.CountDownTimer;
+import android.support.v7.widget.RecyclerView;
+>>>>>>> 851002625edc4dd172df7d893d0aba6e3a70d2d2
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+<<<<<<< HEAD
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
@@ -18,6 +24,17 @@ import carbon.zeroevents.ListCards.*;
 import carbon.zeroevents.MainActivity;
 import carbon.zeroevents.MovieActivity;
 import carbon.zeroevents.R;
+=======
+
+
+import java.util.Calendar;
+import java.util.Collections;
+
+import java.util.List;
+
+import testerson.testy.fragment_and_tabtest.ListCards.*;
+import testerson.testy.fragment_and_tabtest.R;
+>>>>>>> 851002625edc4dd172df7d893d0aba6e3a70d2d2
 
 /**
  * Created by mariopalmissolano on 10/03/2018.
@@ -76,6 +93,7 @@ public class VocabularyAdapter extends RecyclerView.Adapter<SetViewHolder> {
             @Override
             public void onClick(View v) {
 
+<<<<<<< HEAD
                 Intent intent = new Intent(v.getContext(), MovieActivity.class);
                 v.getContext().startActivity(intent);
 
@@ -83,6 +101,13 @@ public class VocabularyAdapter extends RecyclerView.Adapter<SetViewHolder> {
 
 
 
+=======
+                if (onTapListener != null) {
+
+                    onTapListener.OnTapView(position);
+
+                }
+>>>>>>> 851002625edc4dd172df7d893d0aba6e3a70d2d2
 
             }
         });
