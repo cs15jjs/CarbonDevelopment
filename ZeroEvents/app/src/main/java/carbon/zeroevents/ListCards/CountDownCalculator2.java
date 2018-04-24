@@ -1,26 +1,7 @@
 package carbon.zeroevents.ListCards;
 
-<<<<<<< HEAD
 import android.os.CountDownTimer;
 
-=======
-import android.app.Activity;
-import android.app.Application;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.util.Log;
-
-
-
-import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
->>>>>>> 851002625edc4dd172df7d893d0aba6e3a70d2d2
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 

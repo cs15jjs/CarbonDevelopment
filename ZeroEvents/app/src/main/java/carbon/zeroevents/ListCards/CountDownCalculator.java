@@ -1,18 +1,9 @@
 package carbon.zeroevents.ListCards;
 
 
-<<<<<<< HEAD
 import android.os.CountDownTimer;
 import android.util.Log;
 
-=======
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.CountDownTimer;
-import android.util.Log;
-
-
->>>>>>> 851002625edc4dd172df7d893d0aba6e3a70d2d2
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

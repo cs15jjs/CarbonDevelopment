@@ -4,13 +4,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-<<<<<<< HEAD
 import carbon.zeroevents.ListCards.*;
 import carbon.zeroevents.R;
-=======
-import testerson.testy.fragment_and_tabtest.ListCards.*;
-import testerson.testy.fragment_and_tabtest.R;
->>>>>>> 851002625edc4dd172df7d893d0aba6e3a70d2d2
 
 
 /**
