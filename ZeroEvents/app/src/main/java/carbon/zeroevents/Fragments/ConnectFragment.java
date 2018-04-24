@@ -22,17 +22,17 @@ import carbon.zeroevents.R;
 
 public class ConnectFragment extends Fragment {
 
-    private Button logoutButton, loginButton;
-    private TextView tvEmail, tvUsername, tvFirst, tvLast, loggedinTV;
+    private Button logoutButton;
+    private TextView tvEmail, tvUsername, tvFirst, tvLast;
     private UserSession session;
     private UserInfo userInfo;
     private Activity activity;
 
-    @Nullable
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.connect_tab, container, false);
+        View view = inflater.inflate(R.layout.connect_tab,container,false);
 
         activity = this.getActivity();
 
@@ -40,21 +40,24 @@ public class ConnectFragment extends Fragment {
         userInfo = new UserInfo(activity);
 
         logoutButton = (Button) view.findViewById(R.id.logOutButton);
-        loginButton = (Button) view.findViewById(R.id.connectLoginButton);
         tvEmail = (TextView) view.findViewById(R.id.textViewEmail);
         tvUsername = (TextView) view.findViewById(R.id.textViewUsername);
         tvFirst = (TextView) view.findViewById(R.id.textViewFirstName);
         tvLast = (TextView) view.findViewById(R.id.textViewLast);
-        loggedinTV = (TextView) view.findViewById(R.id.textViewStatus);
 
         if (!session.isUserLoggedin()) {
-            loggedinTV.setText("YOU ARE NOT LOGGED IN ...");
             startActivity(new Intent(activity, Login.class));
-        }else {
-            loginButton.setVisibility(View.INVISIBLE);
         }
 
-        setText();
+        String username = userInfo.getKeyUsername();
+        String email = userInfo.getKeyUsername();
+        String firstN = userInfo.getKeyFirstName();
+        String lastI = userInfo.getKeyLastInitial();
+
+        tvUsername.setText(username);
+        tvEmail.setText(email);
+        tvFirst.setText(firstN);
+        tvLast.setText(lastI);
 
         logoutButton.setOnClickListener(new View.OnClickListener() {
 
@@ -63,32 +66,9 @@ public class ConnectFragment extends Fragment {
                 session.setLoggedin(false);
                 userInfo.clearUserInfo();
                 startActivity(new Intent(activity, Login.class));
-                loggedinTV.setText("YOU ARE NOT LOGGED IN ...");
-                loginButton.setVisibility(View.VISIBLE);
-                setText();
-            }
-        });
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(activity, Login.class));
             }
         });
 
         return view;
-    }
-
-    private void setText(){
-
-        String username = userInfo.getKeyUsername();
-        String email = userInfo.getKeyEmail();
-        String firstN = userInfo.getKeyFirstName();
-        String lastI = userInfo.getKeyLastInitial();
-
-        tvUsername.setText(username);
-        tvEmail.setText(email);
-        tvFirst.setText(firstN);
-        tvLast.setText(lastI);
     }
 }

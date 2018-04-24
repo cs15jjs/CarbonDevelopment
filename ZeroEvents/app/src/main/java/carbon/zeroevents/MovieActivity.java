@@ -17,7 +17,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import carbon.zeroevents.Fragments.ExploreFragment;
-import carbon.zeroevents.Tabs.AllTab;
 
 /**
  * Created by Owner on 29/01/2018.
@@ -27,7 +26,7 @@ public class MovieActivity extends AppCompatActivity {
 
     private String TAG = MovieActivity.class.getSimpleName();
     Intent intent = getIntent();
-    String str = AllTab.MOVIE_ID;
+    String str = ExploreFragment.MOVIE_ID;
     TextView overviewTextView;
 
     @Override

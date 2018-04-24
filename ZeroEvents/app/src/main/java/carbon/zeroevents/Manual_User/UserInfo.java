@@ -49,11 +49,11 @@ public class UserInfo {
         editor.commit();
     }
 
-    public String getKeyUsername(){return prefs.getString(KEY_USERNAME, "Username");}
+    public String getKeyUsername(){return prefs.getString(KEY_USERNAME, "");}
 
-    public String getKeyEmail(){return prefs.getString(KEY_EMAIL, "Email");}
+    public String getKeyEmail(){return prefs.getString(KEY_EMAIL, "");}
 
-    public String getKeyFirstName(){return prefs.getString(KEY_FIRST_NAME, "First Name");}
+    public String getKeyFirstName(){return prefs.getString(KEY_FIRST_NAME, "");}
 
-    public String getKeyLastInitial(){return prefs.getString(KEY_LAST_INITIAL, "Last Initial");}
+    public String getKeyLastInitial(){return prefs.getString(KEY_LAST_INITIAL, "");}
 }

@@ -22,7 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HelpActivity"></activity>
+        <activity android:name=".SettingsPage.LocationActivity" />
+        <activity android:name=".SettingsPage.NotificationActivity" />
+        <activity android:name=".SettingsPage.AboutActivity" />
+        <activity android:name=".SettingsPage.Accessibility" />
+        <activity android:name=".SettingsPage.HelpActivity"></activity>
     </application>
 
 </manifest>

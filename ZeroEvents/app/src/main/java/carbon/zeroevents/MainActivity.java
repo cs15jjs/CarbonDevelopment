@@ -10,8 +10,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.support.v7.widget.Toolbar;
-import android.widget.TextView;
 
 import carbon.zeroevents.Fragments.ConnectFragment;
 import carbon.zeroevents.Fragments.ExploreFragment;
@@ -22,40 +20,39 @@ import carbon.zeroevents.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textview;
+    //private TextView mTextMessage;
     private ViewPager viewPager;
     MenuItem prevMenuItem;
     BottomNavigationView bottomNavigationView;
-
+    private int pageSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textview = (TextView) findViewById(R.id.appbar_textview);
         viewPager = (ViewPager) findViewById(R.id.container);
+
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
+
+                int id = item.getItemId();
+
+                switch (id) {
                     case R.id.navigation_home:
                         viewPager.setCurrentItem(0);
-                        textview.setText("Home");
                         return true;
                     case R.id.navigation_explore:
                         viewPager.setCurrentItem(1);
-                        textview.setText("Explore");
                         return true;
                     case R.id.navigation_connect:
                         viewPager.setCurrentItem(2);
-                        textview.setText("Connect");
                         return true;
                     case R.id.navigation_settings:
                         viewPager.setCurrentItem(3);
-                        textview.setText("Settings");
                         return true;
                 }
                 return false;

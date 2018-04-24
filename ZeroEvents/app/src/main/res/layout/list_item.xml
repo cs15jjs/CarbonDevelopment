@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
-        android:textColor="@color/colorPrettyPink"
+        android:textColor="@color/colorText"
         android:textSize="24sp"
         android:singleLine="true"
         android:ellipsize="end"/>
@@ -25,10 +25,18 @@
         android:id="@+id/movie_overview"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrettyBlue"
+        android:textColor="@color/colorText"
         android:textStyle="bold"
         android:singleLine="true"
         android:layout_below="@id/movie_title"
         android:ellipsize="end" />
+
+
+    <!--<TextView-->
+        <!--android:id="@+id/release_date"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textColor="#785032"-->
+        <!--android:textStyle="bold" />-->
 
 </RelativeLayout>

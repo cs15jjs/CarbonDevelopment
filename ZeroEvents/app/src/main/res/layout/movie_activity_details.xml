@@ -19,14 +19,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
+            app:contentScrim="@color/colorStatusBar"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/toolbar">
+            app:toolbarId="@+id/Notif_toolbar">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/detail_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="@dimen/activity_vertical_margin"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
                 <TextView
@@ -35,7 +35,7 @@
                 android:layout_height="match_parent"
                     android:gravity="center"
                     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-                android:textColor="@color/colorPrettyPink"
+                android:textColor="@color/colorText"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
