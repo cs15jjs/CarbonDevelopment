@@ -58,12 +58,11 @@ public class HelpActivity extends AppCompatActivity {
                         JSONObject jsonObject = new JSONObject(s);
                             JSONArray array = jsonObject.getJSONArray("FAQ");
 
-                            for(int i = 0; i< array.length();i++){
+                            for(int i = 0; i < array.length();i++){
                                 JSONObject o = array.getJSONObject(i);
                                 HelpList item = new HelpList(
                                         o.getString("Topics"),
                                         o.getString("Answer")
-
                                 );
 
                                 listitems.add(item);

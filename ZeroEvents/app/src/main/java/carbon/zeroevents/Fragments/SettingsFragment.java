@@ -15,6 +15,7 @@ import android.widget.ListView;
 import carbon.zeroevents.R;
 import carbon.zeroevents.SettingsPage.AboutActivity;
 import carbon.zeroevents.SettingsPage.Accessibility;
+import carbon.zeroevents.SettingsPage.AccountActivity;
 import carbon.zeroevents.SettingsPage.HelpActivity;
 import carbon.zeroevents.SettingsPage.LocationActivity;
 import carbon.zeroevents.SettingsPage.NotificationActivity;
@@ -35,7 +36,7 @@ public class SettingsFragment extends Fragment {
 
         activity = this.getActivity();
 
-        String[] settingOptions = new String[] {"Location", "Notifications","Accessibility", "Help", "About" };
+        String[] settingOptions = new String[] {"Account","Location", "Notifications","Accessibility", "Help", "About" };
         ListView listView = (ListView) view.findViewById(R.id.settingMenu) ;
 
         ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String> (activity,android.R.layout.simple_list_item_1,
@@ -45,31 +46,36 @@ public class SettingsFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 if(position == 0)
                 {
-                    Intent intent = new Intent(view.getContext(), LocationActivity.class);
+                    Intent intent = new Intent(view.getContext(), AccountActivity.class);
                     startActivityForResult(intent,0);
                 }
+
                 if(position == 1)
                 {
-                    Intent intent = new Intent(view.getContext(),NotificationActivity.class);
+                    Intent intent = new Intent(view.getContext(), LocationActivity.class);
                     startActivityForResult(intent,1);
                 }
                 if(position == 2)
                 {
-                    Intent intent = new Intent(view.getContext(), Accessibility.class);
+                    Intent intent = new Intent(view.getContext(),NotificationActivity.class);
                     startActivityForResult(intent,2);
                 }
                 if(position == 3)
                 {
-                    Intent intent = new Intent(view.getContext(), HelpActivity.class);
+                    Intent intent = new Intent(view.getContext(), Accessibility.class);
                     startActivityForResult(intent,3);
                 }
                 if(position == 4)
                 {
-                    Intent intent = new Intent(view.getContext(), AboutActivity.class);
+                    Intent intent = new Intent(view.getContext(), HelpActivity.class);
                     startActivityForResult(intent,4);
+                }
+                if(position == 5)
+                {
+                    Intent intent = new Intent(view.getContext(), AboutActivity.class);
+                    startActivityForResult(intent,5);
                 }
             }
         });

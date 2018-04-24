@@ -100,4 +100,7 @@
     <string name="textview">TextView</string>
     <string name="notif_option">TextView</string>
     <string name="checkbox">CheckBox</string>
+    <string name="accountsettings">Change your profile information</string>
+    <string name="enter_new_email">Enter New Email</string>
+    <string name="enter_new_password">Enter New Password</string>
 </resources>
