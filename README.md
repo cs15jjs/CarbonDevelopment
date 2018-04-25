@@ -1,10 +1,16 @@
 Zero Events App - Group Project (Team 6)
+#================#
 
 Must be placed in a directory named 'CarbonDevelopment'
 
-Dependencies:
 
--Implementation ‘com.android.volley:volley:1.0.0’
+Dependencies:
+SDK Version should be version 26 and suppport library should be 26.1.0, however if your SDK is a later version please update the dependency versions.
+
+-implementation ‘com.android.volley:volley:1.0.0’
+-implementation 'com.squareup.picasso:picasso:2.71828'
+-implementation 'com.android.support:recyclerview-v7:26.1.0'
+-implementation 'com.android.support:cardview-v7:26.1.0'
 
 -Manifest.xml must allow permissions for internet use
 
