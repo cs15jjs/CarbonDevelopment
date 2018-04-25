@@ -16,6 +16,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
@@ -89,7 +90,8 @@ public class ExploreLocTab extends Fragment implements OnMapReadyCallback{
 
         googleMap.addMarker(new MarkerOptions().position(new LatLng(51.53315809999999, -0.4692108000000417)));
 
-
+        CameraPosition BrunelUniversity = CameraPosition.builder().target(new LatLng(51.53315809999999, -0.4692108000000417)).zoom(16).bearing(0).tilt(0).build();
+        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(BrunelUniversity));
     }
 
 }
