@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Zero Events</string>
     <string name="title_home">Home</string>
@@ -101,4 +102,28 @@
     <string name="notif_option">TextView</string>
     <string name="checkbox">CheckBox</string>
     <string name="about_us">About Us</string>
+
+
+    <!--Example settings for Movie Activity-->
+
+    <string name="sign_up_button">SIGN UP</string>
+    <string name="log_in_button">LOG IN</string>
+    <string name="log_out_button">LOG OUT</string>
+    <string name="not_now_textview"><u>Not now, sign in later ...</u></string>
+    <string name="oop_sorry">Oops â€¦ No video available!</string>
+
+    <string name="popularity_text">Popularity â€¦</string>
+    <string name="release_date">Release Date: %1$s</string>
+    <string name="not_hot">NOT HOT!</string>
+    <string name="warm">WARM!</string>
+    <string name="hot">HOT!</string>
+    <string name="hot_hot_hot">HOT HOT HOT!!!</string>
+
+    <string name="logged_in">YOU ARE LOGGED IN ...</string>
+
+
+    <!--Google Maps-->
+    <string name="google_maps_API_key">AIzaSyADxo1xLfXzmCCsvd96eAF0qUM6Vsh_MbQ</string>
+
 </resources>
+

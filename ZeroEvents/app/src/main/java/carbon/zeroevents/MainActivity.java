@@ -10,6 +10,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
+
 
 import carbon.zeroevents.Fragments.ConnectFragment;
 import carbon.zeroevents.Fragments.ExploreFragment;
@@ -20,17 +23,19 @@ import carbon.zeroevents.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    //private TextView mTextMessage;
+    private TextView textview;
     private ViewPager viewPager;
     MenuItem prevMenuItem;
     BottomNavigationView bottomNavigationView;
     private int pageSelected;
+    public static String MOVIE_ID = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        textview = (TextView) findViewById(R.id.appbar_textview);
         viewPager = (ViewPager) findViewById(R.id.container);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);

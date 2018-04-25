@@ -3,7 +3,11 @@
     package="carbon.zeroevents">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    
     <application
         android:name=".Manual_User.AndroidLoginController"
         android:allowBackup="true"
@@ -28,6 +32,12 @@
         <activity android:name=".SettingsPage.AboutActivity" />
         <activity android:name=".SettingsPage.Accessibility"/>
         <activity android:name=".SettingsPage.HelpActivity"></activity>
+
+
+        <!--Google Maps Android Key-->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyADxo1xLfXzmCCsvd96eAF0qUM6Vsh_MbQ"/>
     </application>
 
 </manifest>
